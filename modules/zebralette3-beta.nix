@@ -1,15 +1,16 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
   options.audio-plugins.zebralette3-beta = {
-    enable = lib.mkEnableOption "Enable Zebralette3 plugin linking";
+    enable = pkgs.lib.mkEnableOption "Enable Zebralette3 plugin linking";
   };
 
-  config = lib.mkIf config.programs.zebralette.enable {
-    home.activation.zebralette3-beta-symlinks = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  config = pkgs.lib.mkIf config.programs.zebralette.enable {
+    home.activation.zebralette3-beta-symlinks = pkgs.lib.hm.dag.entryAfter ["writeBoundary"] ''
       echo "Linking Zebralette3 to plugin paths..."
 
       mkdir -p ~/.vst3/u-he
