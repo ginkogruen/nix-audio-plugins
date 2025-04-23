@@ -18,11 +18,11 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    packages.${system}.plugin.zebralette3-beta = pkgs.callPackage ./pkgs/zebralette3-beta.nix {};
+    packages.${system}.zebralette3-beta = pkgs.callPackage ./pkgs/zebralette3-beta.nix {};
 
-    homeModule.${system}.zebralette3-beta = import ./modules/zebralette3-beta.nix {
+    homeModule.${system}.default = import ./modules/zebralette3-beta.nix {
       inherit pkgs;
-      plugin = self.packages.${system}.plugin;
+      plugin = self.packages.${system};
     };
   };
 }
