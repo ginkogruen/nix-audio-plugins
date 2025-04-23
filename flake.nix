@@ -20,6 +20,6 @@
   in {
     packages.${system}.zebralette3-beta = pkgs.callPackage ./pkgs/zebralette3-beta.nix {};
 
-    homeModule.${system}.default = import ./modules/zebralette3-beta.nix {};
+    homeModule.${system}.default = import ./modules/zebralette3-beta.nix { inherit self; };
   };
 }
