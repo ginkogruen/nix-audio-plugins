@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  plugin,
+  self,
   ...
 }: {
   options.audio-plugins.zebralette3-beta = {
@@ -13,13 +13,13 @@
       echo "Linking Zebralette3 to plugin paths..."
 
       mkdir -p ~/.vst3/u-he
-      ln -sf ${plugin.zebralette3-beta}/lib/vst3/u-he/Zebralette3.vst3 ~/.vst3/u-he/Zebralette3.vst3
+      ln -sf ${self.packages."x86_64-linux".zebralette3-beta}/lib/vst3/u-he/Zebralette3.vst3 ~/.vst3/u-he/Zebralette3.vst3
 
       mkdir -p ~/.clap/u-he
-      ln -sf ${plugin.zebralette3-beta}/lib/clap/u-he/Zebralette3.64.clap ~/.clap/u-he/Zebralette3.64.clap
+      ln -sf ${self.packages."x86_64-linux".zebralette3-beta}/lib/clap/u-he/Zebralette3.64.clap ~/.clap/u-he/Zebralette3.64.clap
 
       mkdir -p ~/.u-he
-      ln -sf ${plugin.zebralette3-beta}/share/Zebralette3 ~/.u-he/Zebralette3
+      ln -sf ${self.packages."x86_64-linux".zebralette3-beta}/share/Zebralette3 ~/.u-he/Zebralette3
     '';
   };
 }
